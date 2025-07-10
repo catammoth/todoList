@@ -1,21 +1,151 @@
-a {
+:root {
+  --paper-color: #fff;
+  --line-color: #94acd4;
+  --text-color: #2c3e50;
+  --accent-color: #3498db;
+  --checkbox-size: 1.2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Kalam", cursive;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: #f0f2f5;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.notepad {
+  background: var(--paper-color);
+  max-width: 800px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: relative;
+  background-image: repeating-linear-gradient(
+    var(--paper-color) 0px,
+    var(--paper-color) 31px,
+    var(--line-color) 31px,
+    var(--line-color) 32px
+  );
+  background-position: 0 3.2rem;
+}
+
+h1 {
+  font-family: "Patrick Hand", cursive;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0 1rem;
+}
+
+.todo-item {
+  margin-bottom: 1.8rem;
+}
+
+.task-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  border: 2px solid var(--text-color);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 0.8rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+label {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.sub-item {
+  list-style: none;
+  padding-left: calc(var(--checkbox-size) + 2rem);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.sub-item-link {
   text-decoration: none;
-  color: blue;
+  color: var(--accent-color);
+  transition: all 0.2s ease;
 }
 
 .sub-item-link:visited {
-  color: grey;
+  color: #9b59b6;
 }
 
 .sub-item-link:hover {
-  color: black;
+  color: var(--text-color);
   text-decoration: underline;
 }
 
 .sub-item-link:focus {
-  outline: 2px solid red;
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .sub-item-link:active {
-  color: green;
+  color: #2980b9;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  .notepad {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .todo-list {
+    padding: 0 0.5rem;
+  }
+
+  label {
+    font-size: 1.1rem;
+  }
 }
